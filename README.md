@@ -1,2 +1,99 @@
-# password-generator
-Generador de contraseñas seguras del lado del cliente optimizado para MariaDB/MySQL. Crea usuarios y claves con sintaxis SQL correcta y validación de caracteres especiales directamente desde el navegador.
+# MariaDB Secure Password Generator
+
+Generador de contraseñas web del lado del cliente optimizado para **MariaDB/MySQL**. Este proyecto permite crear credenciales seguras y genera automáticamente los comandos SQL de creación de usuarios (`CREATE USER`), gestionando correctamente el escape de caracteres especiales.
+
+---
+
+## 🚀 Features
+
+- **100% Client-side**: Todo el procesamiento se realiza en el navegador con JavaScript; nada se envía a un servidor.
+- **MariaDB Optimized**: Algoritmos diseñados para manejar caracteres "seguros" y "arriesgados" en sintaxis SQL.
+- **SQL Command Generation**: Genera automáticamente la sentencia `CREATE USER` o `SET PASSWORD`.
+- **Fisher-Yates Shuffle**: Implementación robusta para la aleatorización de caracteres.
+- **Responsive UI**: Interfaz moderna y adaptativa construida con CSS nativo.
+- **Clipboard Integration**: Copiado rápido de contraseñas y comandos SQL con un clic.
+
+---
+
+## 🧩 Requirements
+
+- Cualquier navegador web moderno (Firefox, Chrome, Edge, Safari).
+- No requiere servidor web, Node.js ni bases de datos para funcionar.
+- **Opcional**: Servidor local (Apache/Nginx) si deseas alojarlo en red.
+
+---
+
+## 🧰 Setup
+
+Al ser una aplicación estática, no requiere compilación.
+
+### 1. Clonar el repositorio
+
+```bash
+git clone [https://github.com/tu-usuario/password-generator.git](https://github.com/tu-usuario/password-generator.git)
+cd password-generator
+```
+
+### 2. Ejecutar la aplicación
+
+Simplemente abre el archivo `index.html` con tu navegador preferido:
+
+```bash
+# Desde terminal (ejemplo para KDE)
+kioclient5 exec index.html
+# O simplemente
+firefox index.html
+```
+
+---
+
+## 🧠 How It Works
+
+La herramienta utiliza `Math.random()` criptográficamente seguro (cuando está disponible) junto con el algoritmo de mezcla **Fisher-Yates** para garantizar que los caracteres no sigan patrones predecibles.
+
+El flujo de generación en `script.js` sigue estos pasos:
+1.  **Selección**: Construye un *charset* basado en las preferencias del usuario (Mayúsculas, Minúsculas, Números, Símbolos).
+2.  **Garantía de entropía**: Fuerza la inclusión de al menos un carácter de cada tipo seleccionado antes de rellenar el resto.
+3.  **Mezcla**: Aplica el algoritmo de barajado para eliminar el orden predecible de la inserción forzada.
+4.  **Sanitización SQL**: Si se utilizan caracteres "problemáticos" (como `'` o `\`), la herramienta escapa automáticamente la cadena en el output SQL visualizado para evitar errores de sintaxis en MariaDB.
+
+Ejemplo de salida SQL generada:
+```sql
+CREATE USER 'nuevo_usuario'@'localhost' IDENTIFIED BY 'tu_c0ntraseña_segura';
+```
+
+---
+
+## ⚡ Character Sets
+
+La aplicación clasifica los caracteres especiales en dos grupos para maximizar la compatibilidad con diferentes clientes SQL y shells:
+
+| Tipo | Caracteres | Compatibilidad | Uso Recomendado |
+|--------|------|----------------|-----------|
+| **Safe** | `! @ # $ % ^ * ( ) _ + - =` | Alta | **Siempre** |
+| **Risky** | `& ' " ; \ ` ` | Media/Baja | Requiere escape SQL |
+| **Alphanumeric** | `A-Z`, `a-z`, `0-9` | Universal | Base de la contraseña |
+
+*Nota: La herramienta gestiona automáticamente el escapado de los caracteres "Risky" en el bloque de código SQL.*
+
+---
+
+## 🧾 License
+
+Este proyecto incluye componentes bajo la siguiente licencia:
+
+### 1. Font Awesome (Iconos)
+Utilizado vía CDN, bajo licencia [CC BY 4.0 License](https://fontawesome.com/license).
+
+### 2. Password Generator Code (this repository)
+Todo el código original HTML, CSS y JavaScript — incluyendo la lógica de generación y la interfaz — es © 2025 **X Software** y se distribuye bajo la **MIT License**.
+
+Eres libre de usar, modificar y redistribuir este software bajo los términos de la Licencia MIT.  
+Consulta la licencia completa aquí: [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+
+---
+
+## 🧑‍💻 Author
+
+Desarrollado por [**X Software**](https://xsoftware.es)  
+Linux software development, web solutions, and system automation.

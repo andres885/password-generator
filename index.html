@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas MariaDB</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-database"></i> Generador de Contraseñas MariaDB</h1>
+            <p class="subtitle">Crea contraseñas seguras y compatibles con MariaDB/MySQL</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-sliders-h"></i> Configuración</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="length">Longitud de la contraseña: <span id="length-value">16</span> caracteres</label>
+                        <input type="range" id="length" min="8" max="32" value="16">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="include-uppercase">
+                            <input type="checkbox" id="include-uppercase" checked>
+                            <span>Letras MAYÚSCULAS (A-Z)</span>
+                        </label>
+                        <label for="include-lowercase">
+                            <input type="checkbox" id="include-lowercase" checked>
+                            <span>Letras minúsculas (a-z)</span>
+                        </label>
+                        <label for="include-numbers">
+                            <input type="checkbox" id="include-numbers" checked>
+                            <span>Números (0-9)</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Caracteres especiales</h3>
+                        <p class="help-text">MariaDB tiene problemas con algunos caracteres especiales</p>
+                        
+                        <div class="special-chars">
+                            <label for="include-safe">
+                                <input type="checkbox" id="include-safe" checked>
+                                <span>Seguros: <code>! @ # $ % ^ * ( ) _ + - =</code></span>
+                            </label>
+                            
+                            <label for="include-risky">
+                                <input type="checkbox" id="include-risky">
+                                <span>Problemáticos (requieren escape): <code>& ' " ; \ ` |</code></span>
+                                <span class="warning-badge"><i class="fas fa-exclamation-circle"></i> Precaución</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button id="generate-btn" class="btn-primary">
+                            <i class="fas fa-key"></i> Generar Contraseña
+                        </button>
+                        <button id="generate-multiple-btn" class="btn-secondary">
+                            <i class="fas fa-keyboard"></i> 3 Contraseñas
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-lock"></i> Contraseña Generada</h2>
+                </div>
+                <div class="card-body">
+                    <div class="password-display">
+                        <input type="text" id="password-output" readonly>
+                        <button id="copy-btn" class="btn-icon" title="Copiar al portapapeles">
+                            <i class="far fa-copy"></i>
+                        </button>
+                        <button id="refresh-btn" class="btn-icon" title="Generar nueva">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    
+                    <div id="multiple-passwords" class="multiple-passwords">
+                        <!-- Aquí aparecerán múltiples contraseñas si se generan -->
+                    </div>
+
+                    <div class="password-strength">
+                        <h3><i class="fas fa-shield-alt"></i> Seguridad</h3>
+                        <div class="strength-meter">
+                            <div class="strength-bar" id="strength-bar"></div>
+                        </div>
+                        <div class="strength-label" id="strength-label">Fuerza: Media</div>
+                        
+                        <div class="security-tips">
+                            <h4><i class="fas fa-lightbulb"></i> Recomendaciones para MariaDB:</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Usa siempre comillas simples al asignar la contraseña: <code>IDENTIFIED BY 'tu_contraseña'</code></li>
+                                <li><i class="fas fa-check-circle"></i> Longitud mínima recomendada: 12 caracteres</li>
+                                <li><i class="fas fa-exclamation-triangle"></i> Caracteres problemáticos como <code>&</code> y <code>;</code> deben escaparse o evitarse</li>
+                                <li><i class="fas fa-check-circle"></i> Esta herramienta genera contraseñas compatibles por defecto</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-code"></i> Comando SQL Listo</h2>
+                </div>
+                <div class="card-body">
+                    <div class="sql-command">
+                        <code id="sql-command">CREATE USER 'nuevo_usuario'@'localhost' IDENTIFIED BY 'tu_contraseña';</code>
+                        <button id="copy-sql-btn" class="btn-icon" title="Copiar comando SQL">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="usage-examples">
+                        <h3><i class="fas fa-terminal"></i> Ejemplos de uso:</h3>
+                        <pre><code>-- Crear nuevo usuario
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'tu_contraseña';
+
+-- Cambiar contraseña de usuario existente
+SET PASSWORD FOR 'admin'@'localhost' = PASSWORD('tu_contraseña');
+
+-- Con mysqladmin desde terminal
+mysqladmin -u root -p password 'tu_contraseña'</code></pre>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p><i class="fas fa-info-circle"></i> Esta herramienta genera contraseñas seguras y compatibles con MariaDB/MySQL. 
+            Las contraseñas se generan localmente en tu navegador, no se envían a ningún servidor.</p>
+            <p class="copyright">© 2024 Generador de Contraseñas MariaDB</p>
+        </footer>
+    </div>
+
+    <div id="notification" class="notification">
+        <span id="notification-text">Contraseña copiada al portapapeles</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
