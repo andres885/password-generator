@@ -1,4 +1,6 @@
-/* Reset y estilos base */
+/* =========================================
+ *  Base & Reset (Mobile First Defaults)
+ *  ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -6,413 +8,431 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    /* Tipografía estándar del sistema para carga rápida */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333333; /* Gris carbón suave para texto principal */
+    background-color: #fafafa; /* Fondo casi blanco, muy suave */
     min-height: 100vh;
-    padding: 20px;
+    /* Padding menor para móviles */
+    padding: 20px 15px;
 }
 
+/* El contenedor ocupa todo el ancho en móvil */
 .container {
-    max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
 }
 
-/* Header */
+/* =========================================
+ *  Typography & Header
+ *  ========================================= */
 header {
     text-align: center;
     margin-bottom: 30px;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #222222; /* Un poco más oscuro para títulos */
+    /* En móvil, icono y texto se apilan si es necesario */
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 15px;
+    gap: 8px;
 }
 
 .subtitle {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    font-weight: 300;
+    font-size: 0.95rem;
+    color: #666666; /* Gris medio para subtítulos */
+    font-weight: 400;
 }
 
-/* Cards */
+/* =========================================
+ *  Cards & Structure
+ *  ========================================= */
 .card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    margin-bottom: 25px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    border: 1px solid #eaeaea; /* Bordes muy sutiles */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03); /* Sombra casi imperceptible */
 }
 
 .card-header {
-    background: linear-gradient(90deg, #4f46e5, #7c3aed);
-    color: white;
-    padding: 20px 25px;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .card-header h2 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
     display: flex;
     align-items: center;
     gap: 10px;
+    color: #444444;
 }
 
 .card-body {
-    padding: 25px;
+    padding: 20px;
 }
 
-/* Formulario */
+/* =========================================
+ *  Form Elements (Soft UI)
+ *  ========================================= */
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-weight: 500;
-    color: #4a5568;
+    font-size: 0.95rem;
+    color: #444444;
 }
 
+/* Slider suave */
 input[type="range"] {
     width: 100%;
-    height: 8px;
-    border-radius: 4px;
-    background: #e2e8f0;
+    height: 6px;
+    border-radius: 3px;
+    background: #e0e0e0;
     outline: none;
     -webkit-appearance: none;
 }
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: #4f46e5;
+    background: #555555; /* Gris medio */
     cursor: pointer;
-    border: 3px solid white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform 0.1s;
 }
 
+/* Checkboxes suaves */
 input[type="checkbox"] {
+    accent-color: #555555;
     margin-right: 10px;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .form-group label span {
     display: inline-flex;
     align-items: center;
+    color: #555555;
 }
 
 .help-text {
-    font-size: 0.9rem;
-    color: #718096;
+    font-size: 0.85rem;
+    color: #777777;
     margin-top: -5px;
     margin-bottom: 15px;
 }
 
+/* Sección de caracteres especiales (Bajo contraste) */
 .special-chars {
-    background: #f8fafc;
+    background: #f8f8f8;
     padding: 15px;
-    border-radius: 8px;
-    border-left: 4px solid #4f46e5;
+    border-radius: 6px;
+    border: 1px solid #eaeaea;
 }
 
 .special-chars label {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 6px;
-    transition: background 0.2s;
+    margin-bottom: 8px;
+    padding: 4px 0;
+    cursor: pointer;
 }
 
-.special-chars label:hover {
-    background: #edf2f7;
-}
-
-.special-chars code {
+/* Codes inline suaves */
+.special-chars code, .security-tips code {
     font-family: 'Courier New', monospace;
-    background: #e2e8f0;
+    background: #e8e8e8; /* Gris claro en lugar de oscuro */
+    color: #444444;
     padding: 2px 6px;
     border-radius: 4px;
-    margin-left: 5px;
+    margin-left: 6px;
+    font-size: 0.9em;
 }
 
 .warning-badge {
-    background: #fed7d7;
-    color: #c53030;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 0.8rem;
+    background: #fff0f0; /* Tono rojizo muy pálido */
+    color: #c53030; /* Rojo suave */
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
     margin-left: 10px;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
+    font-weight: 500;
 }
 
-/* Botones */
+/* =========================================
+ *  Buttons (Mobile First: Full Width)
+ *  ========================================= */
 .btn-primary, .btn-secondary {
-    padding: 14px 24px;
-    border: none;
-    border-radius: 8px;
+    width: 100%; /* Botones anchos en móvil */
+    padding: 14px 20px;
+    border-radius: 6px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
+    transition: all 0.2s ease;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 12px; /* Espacio entre botones apilados */
 }
 
 .btn-primary {
-    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    background: #555555; /* Gris medio, no negro */
     color: white;
-    margin-right: 15px;
+    border: 1px solid #555555;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+    background: #333333;
+    border-color: #333333;
 }
 
 .btn-secondary {
-    background: #edf2f7;
-    color: #4a5568;
+    background: transparent;
+    color: #555555;
+    border: 1px solid #cccccc;
 }
 
 .btn-secondary:hover {
-    background: #e2e8f0;
-    transform: translateY(-2px);
+    background: #f0f0f0;
+    border-color: #bbbbbb;
 }
 
+/* Botones de icono (cuadrados) */
 .btn-icon {
-    background: #edf2f7;
-    border: none;
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
+    background: transparent;
+    border: 1px solid #cccccc;
+    width: 44px; /* Ancho fijo incluso en móvil */
+    height: 44px; /* Alto fijo */
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
-    color: #4a5568;
+    color: #666666;
+    transition: all 0.2s;
+    flex-shrink: 0; /* Evita que se aplasten */
 }
 
 .btn-icon:hover {
-    background: #4f46e5;
-    color: white;
-    transform: scale(1.05);
+    background: #f0f0f0;
+    color: #333333;
+    border-color: #999999;
 }
 
-/* Contraseña generada */
-.password-display {
+/* =========================================
+ *  Outputs & Results (Mobile: Stacked)
+ *  ========================================= */
+.password-display, .sql-command {
     display: flex;
+    flex-direction: column; /* Apilados verticalmente en móvil */
     gap: 10px;
     margin-bottom: 20px;
 }
 
 #password-output {
-    flex: 1;
-    padding: 16px 20px;
-    font-size: 1.2rem;
-    font-family: 'Courier New', monospace;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    background: #f8fafc;
-    text-align: center;
-    letter-spacing: 1px;
-    font-weight: 600;
-    color: #2d3748;
+width: 100%;
+padding: 14px 16px;
+font-size: 1.1rem;
+font-family: 'Courier New', monospace;
+border: 1px solid #cccccc;
+border-radius: 6px;
+background: #f9f9f9; /* Fondo muy claro */
+text-align: center;
+color: #333333;
+outline: none;
 }
 
+/* Contenedor para los botones de acción en móvil */
+.password-display .btn-icon, .sql-command .btn-icon {
+    width: 100%; /* Botones de acción anchos en móvil */
+}
+
+
+/* Múltiples opciones */
 .multiple-passwords {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .password-option {
-    padding: 12px 16px;
-    background: #f1f5f9;
+    padding: 12px 14px;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
     border-radius: 6px;
     font-family: 'Courier New', monospace;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-left: 4px solid #4f46e5;
+    border-left: 3px solid #999999; /* Acento gris suave */
+    color: #444444;
+    font-size: 0.9rem;
 }
 
 .password-option button {
     background: none;
     border: none;
-    color: #4f46e5;
+    color: #777777;
     cursor: pointer;
-    padding: 5px;
+    padding: 4px 8px;
+    font-size: 0.85rem;
 }
 
-/* Indicador de fuerza */
+/* =========================================
+ *  Indicators & Info
+ *  ========================================= */
 .password-strength {
-    margin-top: 30px;
+    margin-top: 24px;
     padding-top: 20px;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid #eaeaea;
 }
 
 .strength-meter {
-    height: 10px;
-    background: #e2e8f0;
-    border-radius: 5px;
-    margin: 15px 0;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin: 12px 0;
     overflow: hidden;
 }
 
+/* Los colores de la barra se mantienen por JS, pero son suaves */
 .strength-bar {
     height: 100%;
-    width: 60%;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    width: 0%;
+    border-radius: 4px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    opacity: 0.8; /* Un poco de transparencia para suavizar el color */
 }
 
 .strength-label {
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #666666 !important;
 }
 
+/* Tips Section */
 .security-tips {
-    background: #f0f9ff;
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid #0ea5e9;
+    background: #f8f8f8; /* Fondo claro */
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid #eaeaea;
 }
 
 .security-tips h4 {
-    color: #0369a1;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    color: #555555;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    font-weight: 600;
 }
 
-.security-tips ul {
-    list-style: none;
-}
+.security-tips ul { list-style: none; }
 
 .security-tips li {
     margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666666;
     display: flex;
     align-items: flex-start;
     gap: 10px;
 }
 
 .security-tips li i {
-    color: #10b981;
-    margin-top: 3px;
+    color: #999999;
+    margin-top: 4px;
+    font-size: 0.8em;
 }
 
-.security-tips li .fa-exclamation-triangle {
-    color: #f59e0b;
-}
-
-.security-tips code {
+/* =========================================
+ *  Code Blocks (Low Contrast)
+ *  ========================================= */
+/* Bloques de código claros en lugar de oscuros */
+.sql-command code, .usage-examples pre {
+    background: #f4f4f4; /* Gris muy claro */
+    color: #444444; /* Texto gris oscuro */
+    border-radius: 6px;
     font-family: 'Courier New', monospace;
-    background: #dbeafe;
-    padding: 2px 6px;
-    border-radius: 4px;
-    color: #1e40af;
-}
-
-/* Comando SQL */
-.sql-command {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
+    border: 1px solid #e0e0e0;
 }
 
 .sql-command code {
-    flex: 1;
-    padding: 18px 20px;
-    background: #1e293b;
-    color: #cbd5e1;
-    border-radius: 8px;
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 0.9rem;
     overflow-x: auto;
     white-space: nowrap;
 }
 
 .usage-examples {
-    background: #f8fafc;
-    padding: 20px;
-    border-radius: 8px;
+    background: #ffffff;
+    padding: 0; /* Sin padding extra en el contenedor */
+    border: none;
 }
 
 .usage-examples h3 {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #444444;
 }
 
 .usage-examples pre {
-    background: #1e293b;
-    color: #cbd5e1;
-    padding: 20px;
-    border-radius: 8px;
-    overflow-x: auto;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
+    padding: 16px;
+    font-size: 0.85rem;
     line-height: 1.5;
+    overflow-x: auto;
 }
 
-/* Footer */
+/* =========================================
+ *  Footer & Notifications
+ *  ========================================= */
 footer {
     text-align: center;
-    color: white;
+    color: #888888;
     margin-top: 40px;
-    padding: 20px;
-    opacity: 0.9;
-    font-size: 0.95rem;
-}
-
-footer i {
-    margin-right: 8px;
-}
-
-.copyright {
-    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #eaeaea;
     font-size: 0.85rem;
-    opacity: 0.7;
 }
 
-/* Notificación */
+/* Toast Notification Suave */
 .notification {
     position: fixed;
-    bottom: 30px;
+    bottom: 20px;
     left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: #10b981;
+    transform: translateX(-50%) translateY(20px);
+    background: #444444; /* Gris oscuro suave */
     color: white;
-    padding: 15px 25px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 12px 24px;
+    border-radius: 30px; /* Bordes redondeados tipo "pill" */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     z-index: 1000;
     opacity: 0;
+    pointer-events: none;
     transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    width: 90%; /* Ancho en móvil */
+    max-width: 400px;
 }
 
 .notification.show {
@@ -420,34 +440,52 @@ footer i {
     opacity: 1;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* =========================================
+ *  Desktop Media Query (min-width: 768px)
+ *  ========================================= */
+@media (min-width: 768px) {
     body {
-        padding: 15px;
+        padding: 40px 20px;
     }
-    
+
+    .container {
+        max-width: 900px; /* Ancho máximo para escritorio */
+    }
+
     header h1 {
-        font-size: 2rem;
-        flex-direction: column;
-        gap: 10px;
+        font-size: 2.2rem;
+        flex-direction: row; /* Título e icono en línea */
+        justify-content: center;
+        align-items: center;
     }
-    
-    .password-display {
-        flex-direction: column;
+
+    /* Restaurar disposición horizontal en escritorio */
+    .password-display, .sql-command {
+        flex-direction: row;
+        align-items: stretch;
     }
-    
-    .sql-command {
-        flex-direction: column;
+
+    #password-output, .sql-command code {
+    flex: 1; /* Ocupan el espacio restante */
     }
-    
+
+    /* Botones de acción vuelven a ser cuadrados */
+    .password-display .btn-icon, .sql-command .btn-icon {
+        width: 44px;
+    }
+
+    /* Botones principales vuelven a tamaño automático */
     .btn-primary, .btn-secondary {
-        width: 100%;
-        margin-bottom: 10px;
-        margin-right: 0;
-    }
-    
-    .form-group .btn-primary {
-        margin-right: 10px;
         width: auto;
+        display: inline-flex;
+        margin-bottom: 0;
+    }
+
+    .form-group .btn-primary {
+        margin-right: 12px;
+    }
+
+    .notification {
+        width: auto; /* Notificación tamaño automático */
     }
 }
