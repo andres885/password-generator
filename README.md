@@ -1,21 +1,23 @@
+[ 🇬🇧 English Version ](README.en.md)
+
 # MariaDB Secure Password Generator
 
 Generador de contraseñas web del lado del cliente optimizado para **MariaDB/MySQL**. Este proyecto permite crear credenciales seguras y genera automáticamente los comandos SQL de creación de usuarios (`CREATE USER`), gestionando correctamente el escape de caracteres especiales.
 
 ---
 
-## 🚀 Features
+## 🚀 Características
 
 - **100% Client-side**: Todo el procesamiento se realiza en el navegador con JavaScript; nada se envía a un servidor.
-- **MariaDB Optimized**: Algoritmos diseñados para manejar caracteres "seguros" y "arriesgados" en sintaxis SQL.
-- **SQL Command Generation**: Genera automáticamente la sentencia `CREATE USER` o `SET PASSWORD`.
+- **Optimizado para MariaDB**: Algoritmos diseñados para manejar caracteres "seguros" y "arriesgados" en sintaxis SQL.
+- **Generación de Comandos SQL**: Genera automáticamente la sentencia `CREATE USER` o `SET PASSWORD`.
 - **Fisher-Yates Shuffle**: Implementación robusta para la aleatorización de caracteres.
-- **Responsive UI**: Interfaz moderna y adaptativa construida con CSS nativo.
-- **Clipboard Integration**: Copiado rápido de contraseñas y comandos SQL con un clic.
+- **UI Responsiva**: Interfaz moderna y adaptativa construida con CSS nativo.
+- **Integración con Portapapeles**: Copiado rápido de contraseñas y comandos SQL con un clic.
 
 ---
 
-## 🧩 Requirements
+## 🧩 Requisitos
 
 - Cualquier navegador web moderno (Firefox, Chrome, Edge, Safari).
 - No requiere servidor web, Node.js ni bases de datos para funcionar.
@@ -23,7 +25,7 @@ Generador de contraseñas web del lado del cliente optimizado para **MariaDB/MyS
 
 ---
 
-## 🧰 Setup
+## 🧰 Instalación y Uso
 
 Al ser una aplicación estática, no requiere compilación.
 
@@ -47,9 +49,9 @@ firefox index.html
 
 ---
 
-## 🧠 How It Works
+## 🧠 Cómo Funciona
 
-La herramienta utiliza `Math.random()` criptográficamente seguro (cuando está disponible) junto con el algoritmo de mezcla **Fisher-Yates** para garantizar que los caracteres no sigan patrones predecibles.
+La herramienta utiliza `crypto.getRandomValues()` (cuando está disponible) o `Math.random()` junto con el algoritmo de mezcla **Fisher-Yates** para garantizar que los caracteres no sigan patrones predecibles.
 
 El flujo de generación en `script.js` sigue estos pasos:
 1.  **Selección**: Construye un *charset* basado en las preferencias del usuario (Mayúsculas, Minúsculas, Números, Símbolos).
@@ -64,7 +66,7 @@ CREATE USER 'nuevo_usuario'@'localhost' IDENTIFIED BY 'tu_c0ntraseña_segura';
 
 ---
 
-## ⚡ Character Sets
+## ⚡ Sets de Caracteres
 
 La aplicación clasifica los caracteres especiales en dos grupos para maximizar la compatibilidad con diferentes clientes SQL y shells:
 
@@ -78,22 +80,22 @@ La aplicación clasifica los caracteres especiales en dos grupos para maximizar 
 
 ---
 
-## 🧾 License
+## 🧾 Licencia
 
 Este proyecto incluye componentes bajo la siguiente licencia:
 
 ### 1. Font Awesome (Iconos)
 Utilizado vía CDN, bajo licencia [CC BY 4.0 License](https://fontawesome.com/license).
 
-### 2. Password Generator Code (this repository)
-Todo el código original HTML, CSS y JavaScript — incluyendo la lógica de generación y la interfaz — es © 2025 **X Software** y se distribuye bajo la **MIT License**.
+### 2. Password Generator Code (este repositorio)
+Todo el código original HTML, CSS y JavaScript — incluyendo la lógica de generación y la interfaz — es © 2025 **X Software** y se distribuye bajo la **Licencia MIT**.
 
-Eres libre de usar, modificar y redistribuir este software bajo los términos de la Licencia MIT.  
+Eres libre de usar, modificar y redistribuir este software bajo los términos de la Licencia MIT.
 Consulta la licencia completa aquí: [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
 
 ---
 
-## 🧑‍💻 Author
+## 🧑‍💻 Autor
 
-Desarrollado por [**X Software**](https://xsoftware.es)  
-Linux software development, web solutions, and system automation.
+Desarrollado por [**X Software**](https://xsoftware.es)
+Desarrollo de software Linux, soluciones web y automatización de sistemas.
