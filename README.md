@@ -92,12 +92,12 @@ Utilizado vía CDN, bajo licencia [CC BY 4.0 License](https://fontawesome.com/li
 ### 2. Password Generator Code (este repositorio)
 Todo el código original HTML, CSS y JavaScript — incluyendo la lógica de generación y la interfaz — es © 2025 **X Software** y se distribuye bajo la **Licencia MIT**.
 
-Eres libre de usar, modificar y redistribuir este software bajo los términos de la Licencia MIT.
+Eres libre de usar, modificar y redistribuir este software bajo los términos de la Licencia MIT.  
 Consulta la licencia completa aquí: [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
 
 ---
 
 ## 🧑‍💻 Autor
 
-Desarrollado por [**X Software**](https://xsoftware.es)
+Desarrollado por [**X Software**](https://xsoftware.es).  
 Desarrollo de software Linux, soluciones web y automatización de sistemas.
