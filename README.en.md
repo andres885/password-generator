@@ -4,6 +4,8 @@
 
 A client-side web password generator optimized for **MariaDB/MySQL**. This project allows creating secure credentials and automatically generates SQL user creation commands (`CREATE USER`), correctly handling special character escaping.
 
+![Captura de pantalla](./screenshot.png)
+
 ---
 
 ## 🚀 Features

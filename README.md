@@ -4,6 +4,8 @@
 
 Generador de contraseñas web del lado del cliente optimizado para **MariaDB/MySQL**. Este proyecto permite crear credenciales seguras y genera automáticamente los comandos SQL de creación de usuarios (`CREATE USER`), gestionando correctamente el escape de caracteres especiales.
 
+![Captura de pantalla](./screenshot.png)
+
 ---
 
 ## 🚀 Características
